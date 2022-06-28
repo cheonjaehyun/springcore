@@ -17,7 +17,7 @@ public class LogDemoController {
     private final LogDemoService logDemoService;
     //private final MyLogger myLogger;
     // 주입받는게 아니라 클래스를 찾음
-    private final ObjectProvider<MyLogger> myLoggersProvider;
+    private final MyLogger myLogger;
 
 
     @RequestMapping("log-demo")
@@ -25,7 +25,6 @@ public class LogDemoController {
     public String logDemo(HttpServletRequest request){
 
         String requestURL = request.getRequestURI().toString();
-        MyLogger myLogger = myLoggersProvider.getObject();
         myLogger.setRequestURL(requestURL);
 
         myLogger.log("controller test");
